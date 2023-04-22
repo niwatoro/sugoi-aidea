@@ -4,4 +4,7 @@ export type User = {
   photoUrl: string;
   email: string;
   createdAt: number;
+  bio?: string;
+  organization?: string;
+  github?: string;
 };
