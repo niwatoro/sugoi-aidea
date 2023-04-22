@@ -23,8 +23,10 @@ let db: Firestore;
 let auth: Auth;
 // Initialize Firebase
 if (!getApps()?.length) {
-  initializeApp(firebaseConfig);
-  analytics = getAnalytics();
+  const app = initializeApp(firebaseConfig);
+  if (app.name && typeof window !== "undefined") {
+    analytics = getAnalytics();
+  }
   db = getFirestore();
   auth = getAuth();
 }
