@@ -2,6 +2,7 @@ import { useAuth } from "@/context/auth";
 import { login } from "@/lib/auth";
 import Link from "next/link";
 import { FC, useState } from "react";
+import Button from "./button";
 
 const Header: FC = () => {
   const user = useAuth();
@@ -20,7 +21,7 @@ const Header: FC = () => {
       <Link href={"/"}>
         <div className="font-logo text-xl">SugoiAidea</div>
       </Link>
-      <div>{user === null ? !isWaiting ? <button onClick={signIn}>ログイン</button> : null : <button>ユーザーメニュー</button>}</div>
+      <div>{user === null ? !isWaiting ? <Button onClick={signIn}>ログイン</Button> : null : <Button>メニュー</Button>}</div>
     </header>
   );
 };
