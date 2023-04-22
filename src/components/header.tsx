@@ -2,7 +2,7 @@ import { useAuth } from "@/context/auth";
 import { login } from "@/lib/auth";
 import Link from "next/link";
 import { FC, useState } from "react";
-import Button from "./button";
+import Button, { ButtonOnLoading } from "./button";
 import UserMenu from "./user-menu";
 
 const Header: FC = () => {
@@ -22,7 +22,7 @@ const Header: FC = () => {
       <Link href={"/"}>
         <div className="font-logo text-xl">Sugodea</div>
       </Link>
-      <div>{user === null ? !isWaiting && <Button onClick={signIn}>ログイン</Button> : <UserMenu />}</div>
+      <div>{user === null ? !isWaiting ? <Button onClick={signIn}>ログイン</Button> : <ButtonOnLoading /> : <UserMenu />}</div>
     </header>
   );
 };
