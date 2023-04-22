@@ -3,6 +3,7 @@ import { login } from "@/lib/auth";
 import Link from "next/link";
 import { FC, useState } from "react";
 import Button from "./button";
+import UserMenu from "./user-menu";
 
 const Header: FC = () => {
   const user = useAuth();
@@ -19,9 +20,9 @@ const Header: FC = () => {
   return (
     <header className="h-16 flex items-center justify-between px-8">
       <Link href={"/"}>
-        <div className="font-logo text-xl">SugoiAidea</div>
+        <div className="font-logo text-xl">Sugodea</div>
       </Link>
-      <div>{user === null ? !isWaiting ? <Button onClick={signIn}>ログイン</Button> : null : <Button>メニュー</Button>}</div>
+      <div>{user === null ? !isWaiting && <Button onClick={signIn}>ログイン</Button> : <UserMenu />}</div>
     </header>
   );
 };
