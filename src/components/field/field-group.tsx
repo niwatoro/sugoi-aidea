@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
 type Props = {
   id: string;
@@ -11,7 +11,7 @@ type Props = {
   required?: boolean;
 };
 
-const FieldGroup = ({ id, label, children, error, currentlength, action, maxLength, required }: Props) => {
+const FieldGroup: FC<Props> = ({ id, label, children, error, currentlength, action, maxLength, required }) => {
   return (
     <div>
       <div>

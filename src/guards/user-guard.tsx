@@ -1,14 +1,14 @@
 import { useAuth } from "@/context/auth";
 import { User } from "@/types/user";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import ReactLoading from "react-loading";
 
 type Props = {
   children: ((user: User) => ReactNode) | ReactNode;
 };
 
-const UserGuard = ({ children }: Props) => {
+const UserGuard: FC<Props> = ({ children }) => {
   const user = useAuth();
   const router = useRouter();
 
