@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         } else {
           const appUser: User = {
             id: firebaseUser.uid,
+            username: firebaseUser.uid,
             name: firebaseUser.displayName!,
             photoUrl: firebaseUser.photoURL!,
             email: firebaseUser.email!,

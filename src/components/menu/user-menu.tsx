@@ -18,7 +18,7 @@ const links: (user: User) => LinkType[] = (user) => {
     {
       label: user.name,
       icon: <UserIcon />,
-      path: "/mypage",
+      path: `/profile/${user.username}`,
     },
     {
       label: "設定",
