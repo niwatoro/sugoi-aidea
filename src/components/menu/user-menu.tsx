@@ -31,7 +31,7 @@ const links: (user: User) => LinkType[] = (user) => {
 const ListItem = ({ active, icon, label }: { active: boolean; icon: ReactNode; label: string }) => {
   return (
     <div className={classNames("flex rounded-sm items-center", active && "bg-gray-200")}>
-      <div className="w-10 h-10 p-2 text-gray-400">{icon}</div>
+      <div className="w-10 h-10 p-2 text-gray-500">{icon}</div>
       <div className="p-1">{label}</div>
     </div>
   );

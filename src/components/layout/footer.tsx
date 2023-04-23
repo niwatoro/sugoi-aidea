@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="w-full flex justify-between h-6">
         <Link href={"https://www.niwatoro.com"}>niwatoro.com</Link>
         <div className="flex gap-x-3">
-          <div className="border-r border-gray-300 pr-3">
+          <div className="border-r border-gray-200 pr-3">
             <IconLink href={"https://github.com/niwatoro"} icon={<SiGithub size={20} />} />
           </div>
           <IconLink href={"https://twitter.com/niwatoro277"} icon={<SiTwitter size={20} />} />
