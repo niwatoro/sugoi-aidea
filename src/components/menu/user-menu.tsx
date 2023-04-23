@@ -5,7 +5,7 @@ import { User } from "@/types/user";
 import { Menu } from "@headlessui/react";
 import { ArrowRightOnRectangleIcon, Cog6ToothIcon, UserIcon } from "@heroicons/react/24/solid";
 import { ReactNode } from "react";
-import Avatar from "./avatar";
+import Avatar from "../avatar";
 import MenuLink from "./menu-link";
 
 type LinkType = {
@@ -49,7 +49,7 @@ const UserMenu = () => {
       <Menu.Button>
         <Avatar src={user.photoUrl} />
       </Menu.Button>
-      <Menu.Items className="absolute divide-y origin-top-right right-0 w-48 shadow-md rounded-md ring-1 ring-gray-200 pt-2 px-2 pb-0.5">
+      <Menu.Items className="absolute divide-y origin-top-right right-0 w-48 shadow-md rounded-md ring-1 bg-white ring-gray-200 pt-2 px-2 pb-0.5">
         <div className="border-b pb-1">
           {links({ user: user }).map((link) => (
             <Menu.Item key={link.path}>

@@ -2,8 +2,8 @@ import { useAuth } from "@/context/auth";
 import { login } from "@/lib/auth";
 import Link from "next/link";
 import { FC, useState } from "react";
-import Button, { ButtonOnLoading } from "./button";
-import UserMenu from "./user-menu";
+import Button, { ButtonOnLoading } from "../button";
+import UserMenu from "../menu/user-menu";
 
 const Header: FC = () => {
   const user = useAuth();
@@ -18,7 +18,7 @@ const Header: FC = () => {
   };
 
   return (
-    <header className="h-16 flex items-center justify-between px-8">
+    <header className="h-16 flex items-center justify-between px-8 border-b border-gray-200">
       <Link href={"/"}>
         <div className="font-logo text-xl">Sugodea</div>
       </Link>

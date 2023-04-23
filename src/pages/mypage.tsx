@@ -6,8 +6,8 @@ const MyPage: NextPage = () => {
   return (
     <UserGuard>
       {(user) => (
-        <div className="w-screen flex justify-center mt-10">
-          <div className="w-[800px] flex gap-x-10">
+        <div className="w-full mt-10">
+          <div className="flex gap-x-10">
             <div className="w-36 h-36">
               <Avatar src={user.photoUrl} expands />
             </div>
