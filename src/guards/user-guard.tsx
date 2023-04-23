@@ -12,12 +12,10 @@ const UserGuard: FC<Props> = ({ children }) => {
   const user = useAuth();
   const router = useRouter();
 
-  if (user === null && router.pathname !== "/") {
-    router.push("/");
-    return null;
-  }
-
-  if (user == null) {
+  if (user === null) {
+    if (router.pathname !== "/") {
+      router.push("/");
+    }
     return null;
   }
 

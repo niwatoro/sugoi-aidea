@@ -4,7 +4,7 @@ import { classNames } from "@/lib/class-names";
 import { User } from "@/types/user";
 import { Menu } from "@headlessui/react";
 import { ArrowRightOnRectangleIcon, Cog6ToothIcon, UserIcon } from "@heroicons/react/24/solid";
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import Avatar from "../avatar";
 import MenuLink from "./menu-link";
 
@@ -37,7 +37,7 @@ const ListItem = ({ active, icon, label }: { active: boolean; icon: ReactNode; l
   );
 };
 
-const UserMenu = () => {
+const UserMenu = forwardRef(() => {
   const user = useAuth();
 
   if (!user) {
@@ -73,6 +73,6 @@ const UserMenu = () => {
       </Menu.Items>
     </Menu>
   );
-};
+});
 
 export default UserMenu;
