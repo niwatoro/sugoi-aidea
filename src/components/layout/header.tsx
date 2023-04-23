@@ -18,7 +18,7 @@ const Header: FC = () => {
   };
 
   return (
-    <header className="h-16 flex items-center justify-between px-8 border-b border-gray-200 bg-white shadow-sm">
+    <header className="h-16 flex items-center justify-between px-8 border-b border-gray-200 bg-white">
       <Link href={"/"}>
         <div className="font-logo text-xl">Sugodea</div>
       </Link>
