@@ -9,7 +9,7 @@ const Layout: FC<Props> = ({ children }) => {
     <div className="bg-slate-100">
       <Header />
       <main className="w-screen min-h-screen flex justify-center">
-        <div className="w-[800px] p-5">{children}</div>
+        <div className="w-[800px] py-8">{children}</div>
       </main>
       <Footer />
     </div>

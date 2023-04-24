@@ -4,6 +4,7 @@ import UserGuard from "@/guards/user-guard";
 import { Query, collection, getDocs, query, where } from "firebase/firestore";
 import { NextPage } from "next";
 import { useForm } from "react-hook-form";
+import isEmail from "validator/lib/isEmail";
 
 const Settings: NextPage = () => {
   const {
@@ -16,7 +17,7 @@ const Settings: NextPage = () => {
     <UserGuard>
       {(user) => {
         return (
-          <div>
+          <div className="flex flex-col gap-y-5">
             <SettingCard
               title="ユーザー名"
               description="Sugodeaであなたを表す名前空間に使われます"
@@ -38,6 +39,42 @@ const Settings: NextPage = () => {
               })}
               defaultValue={user.username}
               error={errors.username?.message?.toString()}
+            />
+            <SettingCard
+              title="名前"
+              description="Sugodeaであなたを表す名前空間に使われます"
+              subtitle="48文字以下にしてください"
+              onSubmit={handleSubmit((data) => console.log(data))}
+              registerReturn={register("name", {
+                required: "名前を入力してください",
+                validate: (value) => value.length <= 48 || "48文字を超えています",
+              })}
+              defaultValue={user.name}
+              error={errors.name?.message?.toString()}
+            />
+            <SettingCard
+              title="メールアドレス"
+              description="Sugodeaであなたを表す名前空間に使われます"
+              subtitle="48文字以下にしてください"
+              onSubmit={handleSubmit((data) => console.log(data))}
+              registerReturn={register("email", {
+                required: "ユーザー名を入力してください",
+                validate: (value) => isEmail(value) || "メールアドレスが正しくありません",
+              })}
+              defaultValue={user.email}
+              error={errors.email?.message?.toString()}
+            />
+            <SettingCard
+              title="自己紹介"
+              description="Sugodeaであなたを表す名前空間に使われます"
+              subtitle="100文字以下にしてください"
+              onSubmit={handleSubmit((data) => console.log(data))}
+              registerReturn={register("bio", {
+                required: "ユーザー名を入力してください",
+                validate: (value) => value.length <= 200 || "100文字を超えています",
+              })}
+              defaultValue={user.bio ?? ""}
+              error={errors.bio?.message?.toString()}
             />
           </div>
         );
