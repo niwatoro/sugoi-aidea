@@ -1,3 +1,4 @@
+import { classNames } from "@/lib/class-names";
 import { FC, InputHTMLAttributes, ReactNode } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import FieldGroup from "./field-group";
@@ -10,10 +11,10 @@ type Props = {
   register: UseFormRegisterReturn;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const InputField: FC<Props> = ({ label, error, currentlength, action, register, ...props }) => {
+const InputField: FC<Props> = ({ label, error, currentlength, action, className, register, ...props }) => {
   return (
     <FieldGroup label={label} error={error} currentlength={currentlength} action={action} maxLength={props.maxLength} required={props.required} id={register.name}>
-      <input id={register.name} className="border border-slate-300 rounded-md px-4 py-2 w-full" {...register} {...props} />
+      <input id={register.name} className={classNames("border border-slate-200 rounded-md p-2 w-full", className)} {...register} {...props} />
     </FieldGroup>
   );
 };

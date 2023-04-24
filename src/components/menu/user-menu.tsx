@@ -49,7 +49,7 @@ const UserMenu = forwardRef(() => {
       <Menu.Button>
         <Avatar src={user.photoUrl} />
       </Menu.Button>
-      <Menu.Items className="absolute divide-y origin-top-right right-0 w-48 shadow-md rounded-md ring-1 bg-white ring-slate-300 pt-2 px-2 pb-0.5">
+      <Menu.Items className="absolute divide-y origin-top-right right-0 w-48 shadow-md rounded-md ring-1 bg-white ring-slate-200 pt-2 px-2 pb-0.5">
         <div className="border-b pb-1">
           {links(user).map((link) => (
             <Menu.Item key={link.path}>

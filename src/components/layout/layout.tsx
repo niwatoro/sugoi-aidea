@@ -8,7 +8,9 @@ const Layout: FC<Props> = ({ children }) => {
   return (
     <div className="bg-slate-100">
       <Header />
-      <main className="w-screen min-h-screen flex justify-center">{children}</main>
+      <main className="w-screen min-h-screen flex justify-center">
+        <div className="w-[800px] p-5">{children}</div>
+      </main>
       <Footer />
     </div>
   );

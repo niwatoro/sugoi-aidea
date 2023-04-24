@@ -20,7 +20,11 @@ const UserGuard: FC<Props> = ({ children }) => {
   }
 
   if (user === undefined) {
-    return <ReactLoading />;
+    return (
+      <div className="h-full w-full flex flex-col justify-center items-center">
+        <ReactLoading color="black" type="spinningBubbles" />
+      </div>
+    );
   }
 
   if (typeof children == "function") {

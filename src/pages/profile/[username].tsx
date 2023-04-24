@@ -1,6 +1,6 @@
-import UserCard from "@/components/user-card";
-import { useAuth } from "@/context/auth";
+import UserCard from "@/components/card/user-card";
 import { db } from "@/firebase/client";
+import UserGuard from "@/guards/user-guard";
 import { User } from "@/types/user";
 import { Query, collection, getDocs, query, where } from "firebase/firestore";
 import { NextPage } from "next";
@@ -12,8 +12,6 @@ type UserContextType = User | null | undefined;
 
 const MyPage: NextPage = () => {
   const [user, setUser] = useState<UserContextType>();
-  const authUser = useAuth();
-  const [isMe, setIsMe] = useState(false);
 
   const router = useRouter();
   const username = router.query.username;
@@ -36,12 +34,6 @@ const MyPage: NextPage = () => {
     }
   }, [username]);
 
-  useEffect(() => {
-    if (authUser && user) {
-      setIsMe(authUser.id === user.id);
-    }
-  }, [authUser, user]);
-
   if (user === null) {
     if (router.pathname !== "/") {
       router.push("/");
@@ -57,11 +49,7 @@ const MyPage: NextPage = () => {
     );
   }
 
-  return (
-    <div className="w-[800px] p-5">
-      <UserCard isMe={isMe} user={user} />
-    </div>
-  );
+  return <UserGuard>{(authUser) => <UserCard isMe={authUser.id === user.id} user={user} />}</UserGuard>;
 };
 
 export default MyPage;
