@@ -9,11 +9,11 @@ type Props = {
   description: string;
   subtitle: string;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  registerReturn: UseFormRegisterReturn;
+  register: UseFormRegisterReturn;
   defaultValue: string;
   error?: string;
 };
-const SettingCard: FC<Props> = ({ title, description, subtitle, onSubmit, registerReturn, defaultValue, error }) => {
+const SettingCard: FC<Props> = ({ title, description, subtitle, onSubmit, register, defaultValue, error }) => {
   return (
     <form onSubmit={onSubmit}>
       <Card
@@ -28,7 +28,7 @@ const SettingCard: FC<Props> = ({ title, description, subtitle, onSubmit, regist
         <div className="p-8 flex flex-col gap-y-3">
           <div className="font-bold text-2xl">{title}</div>
           <div>{description}</div>
-          <InputField label="" error={error} register={registerReturn} defaultValue={defaultValue} />
+          <InputField label="" error={error} register={register} defaultValue={defaultValue} />
         </div>
       </Card>
     </form>
