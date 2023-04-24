@@ -30,8 +30,8 @@ const links: (user: User) => LinkType[] = (user) => {
 
 const ListItem = ({ active, icon, label }: { active: boolean; icon: ReactNode; label: string }) => {
   return (
-    <div className={classNames("flex rounded-sm items-center", active && "bg-gray-200")}>
-      <div className="w-10 h-10 p-2 text-gray-500">{icon}</div>
+    <div className={classNames("flex rounded-sm items-center", active && "bg-slate-200")}>
+      <div className="w-10 h-10 p-2 text-slate-500">{icon}</div>
       <div className="p-1">{label}</div>
     </div>
   );
@@ -49,7 +49,7 @@ const UserMenu = forwardRef(() => {
       <Menu.Button>
         <Avatar src={user.photoUrl} />
       </Menu.Button>
-      <Menu.Items className="absolute divide-y origin-top-right right-0 w-48 shadow-md rounded-md ring-1 bg-white ring-gray-200 pt-2 px-2 pb-0.5">
+      <Menu.Items className="absolute divide-y origin-top-right right-0 w-48 shadow-md rounded-md ring-1 bg-white ring-slate-300 pt-2 px-2 pb-0.5">
         <div className="border-b pb-1">
           {links(user).map((link) => (
             <Menu.Item key={link.path}>

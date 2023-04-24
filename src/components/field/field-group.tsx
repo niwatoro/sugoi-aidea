@@ -27,7 +27,7 @@ const FieldGroup: FC<Props> = ({ id, label, children, error, currentlength, acti
       <div>
         {error && <p className="text-red-500">{error}</p>}
         {maxLength && (
-          <p className="text-gray-500">
+          <p className="text-slate-500">
             {currentlength || 0}/{maxLength}
           </p>
         )}

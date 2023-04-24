@@ -6,7 +6,7 @@ type Props = { children: ReactNode };
 
 const Layout: FC<Props> = ({ children }) => {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-slate-100">
       <Header />
       <main className="w-screen min-h-screen flex justify-center">{children}</main>
       <Footer />

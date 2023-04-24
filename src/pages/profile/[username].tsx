@@ -57,7 +57,11 @@ const MyPage: NextPage = () => {
     );
   }
 
-  return <UserCard isMe={isMe} user={user} />;
+  return (
+    <div className="w-[800px] p-5">
+      <UserCard isMe={isMe} user={user} />
+    </div>
+  );
 };
 
 export default MyPage;
