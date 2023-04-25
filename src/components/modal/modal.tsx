@@ -19,7 +19,7 @@ const Modal: FC<Props> = ({ children, isOpen, onClose }) => {
             &#8203;
           </span>
           <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="ease-in duration-200" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
-            <div className="inline-block w-full max-w-md p-8 pb-5 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-md">{children}</div>
+            <div className="inline-block w-full max-w-md p-6 pb-5 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-md">{children}</div>
           </Transition.Child>
         </div>
       </Dialog>

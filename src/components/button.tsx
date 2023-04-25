@@ -7,7 +7,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const Button: FC<Props> = ({ children, ...props }) => {
   return (
-    <button className="bg-black text-white py-2 min-w-32 px-5 rounded-md" {...props}>
+    <button className="bg-black text-white py-2 min-w-[128px] px-5 rounded-md" {...props}>
       {children}
     </button>
   );
