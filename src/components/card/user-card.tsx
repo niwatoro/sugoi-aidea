@@ -1,5 +1,6 @@
 import { User } from "@/types/user";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import Button from "../button";
 import Card from "./card";
@@ -10,17 +11,25 @@ type Props = {
 };
 const UserCard: FC<Props> = ({ isMe, user }) => {
   const creationDate = new Date(user.createdAt);
+  const router = useRouter();
 
   return (
     <Link href={`/users/${user.username}`}>
       <Card
-        showsSidebar={isMe}
+        showsSidebar
         sidebar={
-          <div className="flex justify-end items-center">
-            <Link href="/settings/profile">
-              <Button>プロフィールを編集</Button>
-            </Link>
-          </div>
+          isMe ? (
+            <div className="flex justify-end items-center">
+              <Link href="/settings/profile">
+                <Button>プロフィールを編集</Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="flex justify-between items-center">
+              <div>メーラーが起動します</div>
+              <Button onClick={() => router.push(`mailto:${user.email}?subject=スゴデアから連絡`)}>連絡する</Button>
+            </div>
+          )
         }
       >
         <div className="h-48 flex">
