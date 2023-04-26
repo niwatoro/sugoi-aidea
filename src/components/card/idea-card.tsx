@@ -22,13 +22,13 @@ const IdeaCard: FC<Props> = ({ idea, user, isMe }) => {
   const [isOpens, setIsOpens] = useState([false, false, false]);
 
   return (
-    <Link href={`users/${user.username}/ideas/${idea.id}`}>
+    <Link href={`/users/${user.username}/ideas/${idea.id}`}>
       <Card
         key={idea.id}
         showsSidebar={isMe}
         sidebar={
           <div className="flex justify-end">
-            <Link href={`users/${user.username}/ideas/${idea.id}/edit`}>
+            <Link href={`/users/${user.username}/ideas/${idea.id}/edit`}>
               <Button>編集</Button>
             </Link>
           </div>
@@ -39,7 +39,7 @@ const IdeaCard: FC<Props> = ({ idea, user, isMe }) => {
             <div className="font-extrabold text-2xl">{idea.title}</div>
             <div className={classNames("border rounded-full w-32 p-1 text-sm text-center", status?.id === "brainstorm" && "border-yellow-500 text-yellow-500", status?.id === "pretotype" && "border-green-500 text-green-500", status?.id === "released" && "border-red-500 text-red-500")}>{status?.name}</div>
           </div>
-          <Link href={`users/${user.username}`} className="flex items-center gap-x-2 hover:bg-slate-200 rounded-sm p-1">
+          <Link href={`/users/${user.username}`} className="flex items-center gap-x-2 hover:bg-slate-200 rounded-sm p-1">
             <div className="w-12 h-12">
               <Avatar expands src={user.photoUrl} />
             </div>
