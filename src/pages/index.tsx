@@ -6,6 +6,7 @@ import { getUsers } from "@/lib/user";
 import { Idea } from "@/types/idea";
 import { User } from "@/types/user";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -31,13 +32,18 @@ const Home: NextPage = () => {
   }, [users]);
 
   return (
-    <div className="flex flex-col gap-y-6">
-      {authUser && <NewIdeaCard authUser={authUser} />}
-      {ideas.map((idea, index) => {
-        const user = users.find((user) => user.id === idea.inventor)!;
-        return <IdeaCard key={index} idea={idea} user={user} isMe={authUser?.id === user.id} />;
-      })}
-    </div>
+    <>
+      <Head>
+        <title>スゴデア | 思いついたすごいアイデアを投稿できるSNS</title>
+      </Head>
+      <div className="flex flex-col gap-y-6">
+        {authUser && <NewIdeaCard authUser={authUser} />}
+        {ideas.map((idea, index) => {
+          const user = users.find((user) => user.id === idea.inventor)!;
+          return <IdeaCard key={index} idea={idea} user={user} isMe={authUser?.id === user.id} />;
+        })}
+      </div>
+    </>
   );
 };
 
