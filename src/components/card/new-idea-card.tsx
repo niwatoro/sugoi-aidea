@@ -77,6 +77,7 @@ const NewIdeaCard: FC<Props> = ({ authUser }) => {
             label=""
             register={register("description", {
               required: "必ず入力してください",
+              validate: (v) => v.length <= 1000 || "1000文字以内で入力してください",
             })}
             placeholder="アイデアについて思う存分語ってみましょう"
             error={errors.description?.message?.toString()}
