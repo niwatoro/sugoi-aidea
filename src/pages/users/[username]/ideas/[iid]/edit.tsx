@@ -38,7 +38,7 @@ const Edit: NextPage = () => {
     if (username !== undefined && iid !== undefined) {
       getUserByUsername(username.toString()).then((user) => setUser(user));
     }
-  }, []);
+  }, [username]);
 
   useEffect(() => {
     if (user !== undefined && user !== null && iid !== undefined) {

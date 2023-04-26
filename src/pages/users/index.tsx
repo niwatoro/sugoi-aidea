@@ -15,8 +15,8 @@ const Users: NextPage = () => {
 
   return (
     <div>
-      {users.map((user) => (
-        <UserCard isMe={authUser?.id === user.id} user={user} />
+      {users.map((user, index) => (
+        <UserCard key={index} isMe={authUser?.id === user.id} user={user} />
       ))}
     </div>
   );
