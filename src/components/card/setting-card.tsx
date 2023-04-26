@@ -1,6 +1,6 @@
-import { FC, FormEvent } from "react";
+import { FC, FormEvent, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import Button from "../button";
+import Button, { ButtonOnLoading } from "../button";
 import InputField from "../field/input-field";
 import Card from "./card";
 
@@ -14,14 +14,25 @@ type Props = {
   error?: string;
 };
 const SettingCard: FC<Props> = ({ title, description, subtitle, onSubmit, register, defaultValue, error }) => {
+  const [isProcessing, setIsProcessing] = useState(false);
+
   return (
-    <form onSubmit={onSubmit}>
+    <form
+      onSubmit={(e) => {
+        setIsProcessing(true);
+        try {
+          onSubmit(e);
+        } finally {
+          setIsProcessing(false);
+        }
+      }}
+    >
       <Card
         showsSidebar
         sidebar={
           <div className="flex justify-between items-center">
             <div>{subtitle}</div>
-            <Button type="submit">保存</Button>
+            {isProcessing ? <ButtonOnLoading /> : <Button type="submit">保存</Button>}
           </div>
         }
       >

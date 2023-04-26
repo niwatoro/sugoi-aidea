@@ -1,6 +1,7 @@
+import { statusItems } from "@/types/idea";
 import { FC, useState } from "react";
 import Button, { ButtonOnLoading } from "../button";
-import ImageField from "../field/image-field";
+import Select, { ListItemProps } from "../select";
 import Card from "./card";
 
 type Props = {
@@ -11,8 +12,8 @@ type Props = {
   defaultValue: string;
   error?: string;
 };
-const SettingImageCard: FC<Props> = ({ title, description, subtitle, onSubmit, defaultValue, error }) => {
-  const [value, setValue] = useState<string>();
+const SettingSelectCard: FC<Props> = ({ title, description, subtitle, onSubmit, defaultValue, error }) => {
+  const [value, setValue] = useState<ListItemProps>(statusItems.find((item) => item.id === defaultValue) ?? statusItems[0]);
   const [isProcessing, setIsProcessing] = useState(false);
 
   return (
@@ -27,12 +28,7 @@ const SettingImageCard: FC<Props> = ({ title, description, subtitle, onSubmit, d
             <Button
               onClick={() => {
                 if (value) {
-                  setIsProcessing(true);
-                  try {
-                    onSubmit(value);
-                  } finally {
-                    setIsProcessing(false);
-                  }
+                  onSubmit(value.id);
                 }
               }}
             >
@@ -44,11 +40,18 @@ const SettingImageCard: FC<Props> = ({ title, description, subtitle, onSubmit, d
     >
       <div className="p-8 flex flex-col gap-y-3">
         <div className="font-bold text-2xl">{title}</div>
-        <div>{description}</div>
-        <ImageField size={{ width: 600, height: 600 }} aspect={1} error={Boolean(error)} setter={(v) => setValue(v!)} defaultImage={defaultValue} />
+        <div className="whitespace-pre-line">
+          {description.split("¥n").map((t, index) => (
+            <span key={index}>
+              {t}
+              <br />
+            </span>
+          ))}
+        </div>
+        <Select items={statusItems} value={value} onChange={(v) => setValue(v)} />
       </div>
     </Card>
   );
 };
 
-export default SettingImageCard;
+export default SettingSelectCard;

@@ -8,7 +8,8 @@ export type Idea = {
   updatedAt: number;
   inventor: string;
   members: string[];
-  status: "brainstorm" | "pretotype" | "launch";
+  status: "brainstorm" | "pretotype" | "released";
+  thumbnails: string[];
 };
 
 export const statusItems: ListItemProps[] = [
@@ -18,10 +19,10 @@ export const statusItems: ListItemProps[] = [
   },
   {
     id: "pretotype",
-    name: "実験中🧪",
+    name: "実証実験中🧪",
   },
   {
-    id: "launch",
+    id: "released",
     name: "リリース済🚀",
   },
 ];

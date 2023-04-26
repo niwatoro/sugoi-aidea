@@ -15,7 +15,7 @@ type Props = {
 const TextareaField: FC<Props> = ({ label, error, currentlength, action, register, className, ...props }) => {
   return (
     <FieldGroup label={label} error={error} currentlength={currentlength} action={action} maxLength={props.maxLength} required={props.required} id={register.name}>
-      <TextareaAutosize id={register.name} className={classNames("flex-1 border rounded p-2 w-full border-slate-200", className)} {...register} {...props} />
+      <TextareaAutosize id={register.name} className={classNames("flex-1 border rounded p-2 w-full border-slate-300", className)} {...register} {...props} />
     </FieldGroup>
   );
 };

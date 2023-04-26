@@ -12,9 +12,10 @@ type Props = {
     height: number;
   };
   aspect: number;
+  noCrop?: boolean;
 };
 
-const ImageField: FC<Props> = ({ setter, error, defaultImage, size, aspect }) => {
+const ImageField: FC<Props> = ({ setter, error, defaultImage, size, aspect, noCrop }) => {
   const [image, setImage] = useState<string | undefined>(defaultImage);
   const [targetImage, setTargetImage] = useState<string>();
 
@@ -32,7 +33,7 @@ const ImageField: FC<Props> = ({ setter, error, defaultImage, size, aspect }) =>
 
   return (
     <>
-      <label className={classNames("inline-block relative cursor-pointer overflow-hidden rounded-lg shadow-lg w-40", error && "ring-2 ring-red-500")}>
+      <label className={classNames("inline-block relative cursor-pointer overflow-hidden rounded-lg shadow-lg w-40 h-40", error && "ring-2 ring-red-500")}>
         <input
           type="file"
           className="hidden"
@@ -43,7 +44,11 @@ const ImageField: FC<Props> = ({ setter, error, defaultImage, size, aspect }) =>
             const reader = new FileReader();
 
             reader.onload = () => {
-              setTargetImage(reader.result as string);
+              if (noCrop ?? false) {
+                setImage(reader.result as string);
+              } else {
+                setTargetImage(reader.result as string);
+              }
               target.value = "";
             };
             reader.readAsDataURL(file as Blob);

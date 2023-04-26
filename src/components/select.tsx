@@ -14,7 +14,7 @@ type Props = {
 const Select: FC<Props> = ({ items, value, onChange }) => {
   return (
     <Listbox value={value} onChange={onChange} as={"div"}>
-      <Listbox.Button className={"border border-slate-200 rounded-full w-36 p-2 text-sm"}>{value.name}</Listbox.Button>
+      <Listbox.Button className={"border border-slate-300 rounded-full w-36 p-2 text-sm"}>{value.name}</Listbox.Button>
       <Listbox.Options className={"absolute z-30 divide-y w-36 text-center shadow-md rounded-md ring-1 bg-white ring-slate-200 px-2 py-1 text-sm"}>
         {items.map(
           (item) =>

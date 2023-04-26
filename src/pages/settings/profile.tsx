@@ -24,7 +24,7 @@ const Settings: NextPage = () => {
             <SettingCard
               title="ユーザー名"
               description="Sugodeaであなたを表す名前空間に使われます"
-              subtitle="48文字以下にしてください"
+              subtitle="48文字以内にしてください"
               onSubmit={handleSubmit((data) =>
                 updateUser(user.id, {
                   username: data.username,
@@ -54,7 +54,7 @@ const Settings: NextPage = () => {
             <SettingCard
               title="名前"
               description="本名もしくは好きな名前を入力してください"
-              subtitle="32文字以下にしてください"
+              subtitle="32文字以内にしてください"
               onSubmit={handleSubmit((data) =>
                 updateUser(user.id, {
                   name: data.name,
@@ -86,7 +86,7 @@ const Settings: NextPage = () => {
             <SettingCard
               title="メールアドレス"
               description="Sugodeaにログインする時に使います"
-              subtitle="更新する前にメールアドレスの確認を行います"
+              subtitle="更新する前にメールアドレスの確認を行います（まだ実装中）"
               onSubmit={handleSubmit((data) =>
                 updateUser(user.id, {
                   email: data.email,

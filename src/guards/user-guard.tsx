@@ -1,9 +1,9 @@
+import Loading from "@/components/loading";
 import { useAuth } from "@/context/auth";
 import { login } from "@/lib/auth";
 import { User } from "@/types/user";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useState } from "react";
-import ReactLoading from "react-loading";
 
 type Props = {
   children: ((user: User) => ReactNode) | ReactNode;
@@ -29,11 +29,7 @@ const UserGuard: FC<Props> = ({ children }) => {
   }
 
   if (user === undefined) {
-    return (
-      <div className="h-full w-full flex flex-col justify-center items-center">
-        <ReactLoading color="black" type="spinningBubbles" />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (typeof children == "function") {
