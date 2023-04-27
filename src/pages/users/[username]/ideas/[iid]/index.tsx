@@ -6,6 +6,7 @@ import { getUserByUsername } from "@/lib/user";
 import { Idea } from "@/types/idea";
 import { User } from "@/types/user";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -44,7 +45,14 @@ const IdeaPage: NextPage = () => {
     return <Loading />;
   }
 
-  return <IdeaCard isMe={authUser?.id === user.id} user={user} idea={idea} />;
+  return (
+    <>
+      <Head>
+        <title>スゴデア | {idea.title}</title>
+      </Head>
+      <IdeaCard isMe={authUser?.id === user.id} user={user} idea={idea} />
+    </>
+  );
 };
 
 export default IdeaPage;
