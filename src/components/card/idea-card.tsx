@@ -37,7 +37,7 @@ const IdeaCard: FC<Props> = ({ idea, user, isMe }) => {
         <div className="p-8 flex flex-col gap-y-3">
           <div className="flex items-center gap-x-3">
             <div className="font-extrabold text-2xl">{idea.title}</div>
-            <div className={classNames("border rounded-full w-32 p-1 text-sm text-center", status?.id === "brainstorm" && "border-yellow-500 text-yellow-500", status?.id === "pretotype" && "border-green-500 text-green-500", status?.id === "released" && "border-red-500 text-red-500")}>{status?.name}</div>
+            <div className={classNames("border rounded-full w-32 min-w-[128px] p-1 text-sm text-center", status?.id === "brainstorm" && "border-yellow-500 text-yellow-500", status?.id === "pretotype" && "border-green-500 text-green-500", status?.id === "released" && "border-red-500 text-red-500")}>{status?.name}</div>
           </div>
           <Link href={`/users/${user.username}`} className="flex items-center gap-x-2 hover:bg-slate-200 rounded-sm p-1">
             <div className="w-12 h-12">
