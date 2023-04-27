@@ -7,6 +7,7 @@ import { Idea } from "@/types/idea";
 import { User } from "@/types/user";
 import { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -40,7 +41,11 @@ const Home: NextPage = () => {
         {authUser && <NewIdeaCard authUser={authUser} />}
         {ideas.map((idea, index) => {
           const user = users.find((user) => user.id === idea.inventor)!;
-          return <IdeaCard key={index} idea={idea} user={user} isMe={authUser?.id === user.id} />;
+          return (
+            <Link href={`users/${user.username}/ideas/${idea.id}`}>
+              <IdeaCard key={index} idea={idea} user={user} isMe={authUser?.id === user.id} />
+            </Link>
+          );
         })}
       </div>
     </>
