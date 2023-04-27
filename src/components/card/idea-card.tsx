@@ -47,16 +47,18 @@ const IdeaCard: FC<Props> = ({ idea, user, isMe }) => {
           </Link>
           <div className="flex-1 flex flex-col gap-y-3">
             <div>{idea.description}</div>
-            <div className="h-80 w-full flex gap-x-3">
-              {idea.thumbnails.map((thumbnail, index) => (
-                <div key={index} className="h-full max-w-[calc(33%-8px)]">
-                  <button className="h-full" onClick={() => setIsOpens((opens) => opens.map((open, i) => (i === index ? true : false)))}>
-                    <img key={index} src={thumbnail} className="object-contain h-full w-full" />
-                  </button>
-                  <ImageModal isOpen={isOpens[index]} onClose={() => setIsOpens((opens) => opens.map(() => false))} src={thumbnail} />
-                </div>
-              ))}
-            </div>
+            {idea.thumbnails.length > 0 && (
+              <div className="h-80 w-full flex gap-x-3">
+                {idea.thumbnails.map((thumbnail, index) => (
+                  <div key={index} className="h-full max-w-[calc(33%-8px)]">
+                    <button className="h-full" onClick={() => setIsOpens((opens) => opens.map((open, i) => (i === index ? true : false)))}>
+                      <img key={index} src={thumbnail} className="object-contain h-full w-full" />
+                    </button>
+                    <ImageModal isOpen={isOpens[index]} onClose={() => setIsOpens((opens) => opens.map(() => false))} src={thumbnail} />
+                  </div>
+                ))}
+              </div>
+            )}
             <div className="text-slate-500 flex flex-col">
               <div>
                 {creationDate.getFullYear()}年{creationDate.getMonth()}月{creationDate.getDate()}日作成
