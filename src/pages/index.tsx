@@ -37,6 +37,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>スゴデア | 思いついたすごいアイデアを投稿できるSNS</title>
+        <meta name="description" content="スゴデアは思いついたすごいアイデアを投稿できるSNS" />
       </Head>
       <div className="flex flex-col gap-y-6">
         {authUser && <NewIdeaCard authUser={authUser} />}

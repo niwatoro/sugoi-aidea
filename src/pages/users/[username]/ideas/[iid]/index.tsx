@@ -48,8 +48,8 @@ const IdeaPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>スゴデア</title>
-        <meta name="description" content={`${idea.title} | ${idea.description}`} />
+        <title>スゴデア | {idea.title}</title>
+        <meta name="description" content={`${idea.title}のページ ${idea.description}`} />
       </Head>
       <IdeaCard isMe={authUser?.id === user.id} user={user} idea={idea} />
     </>

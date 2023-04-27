@@ -4,6 +4,7 @@ import { useAuth } from "@/context/auth";
 import { getUserByUsername } from "@/lib/user";
 import { User } from "@/types/user";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -33,7 +34,15 @@ const MyPage: NextPage = () => {
     return <Loading />;
   }
 
-  return <UserCard isMe={authUser?.id === user.id} user={user} />;
+  return (
+    <>
+      <Head>
+        <title>スゴデア | {user.name}</title>
+        <meta name="description" content={`${user.name}のページ ${user.bio}`} />
+      </Head>
+      <UserCard isMe={authUser?.id === user.id} user={user} />
+    </>
+  );
 };
 
 export default MyPage;
