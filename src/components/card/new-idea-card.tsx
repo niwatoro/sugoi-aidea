@@ -4,6 +4,7 @@ import { User } from "@/types/user";
 import { generateRandomString } from "@/utils/generate-random-string";
 import { uploadImage } from "@/utils/storage";
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../button";
@@ -17,6 +18,8 @@ type Props = {
   authUser: User;
 };
 const NewIdeaCard: FC<Props> = ({ authUser }) => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -51,7 +54,12 @@ const NewIdeaCard: FC<Props> = ({ authUser }) => {
           members: [authUser.id],
           thumbnails: thumbnails,
         };
-        createIdea(authUser.id, idea);
+
+        try {
+          createIdea(authUser.id, idea);
+        } finally {
+          router.reload();
+        }
       })}
     >
       <Card
