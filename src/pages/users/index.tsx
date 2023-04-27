@@ -14,7 +14,7 @@ const Users: NextPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col gap-y-3">
       {users.map((user, index) => (
         <UserCard key={index} isMe={authUser?.id === user.id} user={user} />
       ))}
