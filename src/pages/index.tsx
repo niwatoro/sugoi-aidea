@@ -26,6 +26,7 @@ const Home: NextPage = () => {
       getIdeas(user).then((userIdeas) => {
         allUsersIdeas.push(...userIdeas);
         if (allUsersIdeas.length >= uids.length) {
+          allUsersIdeas.sort((a, b) => b.createdAt - a.createdAt);
           setIdeas(allUsersIdeas);
         }
       });
