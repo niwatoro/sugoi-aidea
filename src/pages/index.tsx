@@ -24,7 +24,7 @@ const Home: NextPage = () => {
     for (const user of users) {
       getIdeas(user).then((userIdeas) => {
         allUsersIdeas.push(...userIdeas);
-        if (allUsersIdeas.length === uids.length) {
+        if (allUsersIdeas.length >= uids.length) {
           setIdeas(allUsersIdeas);
         }
       });
