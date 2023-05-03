@@ -22,15 +22,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     const uids = users.map((user) => user.id);
     const allUsersIdeas: Idea[] = [];
-    for (const user of users) {
-      getIdeas(user).then((userIdeas) => {
-        allUsersIdeas.push(...userIdeas);
-        if (allUsersIdeas.length >= uids.length) {
-          allUsersIdeas.sort((a, b) => b.createdAt - a.createdAt);
-          setIdeas(allUsersIdeas);
-        }
-      });
-    }
+    getIdeas().then((ideas) => setIdeas(ideas));
   }, [users]);
 
   return (
@@ -44,8 +36,8 @@ const Home: NextPage = () => {
         {ideas.map((idea, index) => {
           const user = users.find((user) => user.id === idea.inventor)!;
           return (
-            <Link href={`users/${user.username}/ideas/${idea.id}`}>
-              <IdeaCard key={index} idea={idea} user={user} isMe={authUser?.id === user.id} />
+            <Link key={index} href={`users/${user.username}/ideas/${idea.id}`} passHref>
+              <IdeaCard idea={idea} user={user} isMe={authUser?.id === user.id} />
             </Link>
           );
         })}

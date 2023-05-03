@@ -1,7 +1,6 @@
 import { db } from "@/firebase/client";
 import { Idea } from "@/types/idea";
-import { User } from "@/types/user";
-import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { collectionGroup, doc, getDoc, getDocs, orderBy, query, setDoc, updateDoc } from "firebase/firestore";
 
 export const createIdea = (uid: string, idea: Idea) => {
   const ref = doc(db, `users/${uid}/ideas/${idea.id}`);
@@ -15,14 +14,11 @@ export const getIdea = async (uid: string, iid: string) => {
   return idea;
 };
 
-export const getIdeas = async (user: User) => {
-  const ideas: Idea[] = [];
-  const ideaRef = collection(db, `users/${user.id}/ideas`);
-  const ideaSnap = await getDocs(ideaRef);
-  ideaSnap.forEach((doc) => {
-    const idea = doc.data() as Idea;
-    ideas.push(idea);
-  });
+export const getIdeas = async () => {
+  const ideaRef = collectionGroup(db, "ideas");
+  const q = query(ideaRef, orderBy("updatedAt", "desc"));
+  const snap = await getDocs(q);
+  const ideas = snap.docs.map((doc) => doc.data() as Idea);
   return ideas;
 };
 
